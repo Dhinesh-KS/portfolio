@@ -7,8 +7,8 @@ import { FiArrowDown } from "react-icons/fi";
 const ROLES = [
   "Senior Frontend Engineer",
   "Product Thinker",
-  "Performance Obsessed",
-  "UI Library Builder",
+  "Frontend focused fullstack",
+  "UI/UX Enthusiast",
 ];
 
 const WORDS = [
@@ -138,10 +138,10 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 0.8 }}
           className="font-sans text-muted text-base md:text-lg max-w-xl leading-relaxed mb-10"
         >
-          Senior Frontend Engineer & Product Thinker with 6+ years skilled in
-          building UI/utility libraries, micro-frontends architecture, monorepos,
-          web-app performance optimization, real-time systems, CI/CD, and web
-          application security.
+          Senior Frontend Engineer with 6+ years building scalable web apps,
+          UI libraries & design systems, micro-frontends, monorepos, and
+          real-time systems — with a focus on performance & security.
+          Experienced in crafting seamless UI/UX for SaaS products.
         </motion.p>
 
         {/* CTAs */}
