@@ -9,6 +9,7 @@ const NAV_LINKS = [
   { label: "Skills", href: "#skills" },
   { label: "Experience", href: "#experience" },
   { label: "Projects", href: "#projects" },
+  { label: "Blog", href: "#blog" },
   { label: "Hobbies", href: "#hobbies" },
   { label: "Contact", href: "#contact" },
 ];
@@ -27,15 +28,19 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    const sectionIds = NAV_LINKS.map((l) => l.href.replace("#", ""));
+    // Observe in-page anchor sections (e.g. '#hero', '#blog').
+    // Build selector only for NAV_LINKS that are anchors to avoid observing external routes.
+    const anchorSelectors = NAV_LINKS.filter((l) => l.href.startsWith("#")).map((l) => l.href);
+    if (anchorSelectors.length === 0) return;
+
+    const selector = anchorSelectors.join(",");
+    const elements = Array.from(document.querySelectorAll<HTMLElement>(selector));
     const observers: IntersectionObserver[] = [];
 
-    sectionIds.forEach((id) => {
-      const el = document.getElementById(id);
-      if (!el) return;
+    elements.forEach((el) => {
       const obs = new IntersectionObserver(
         ([entry]) => {
-          if (entry.isIntersecting) setActiveSection(id);
+          if (entry.isIntersecting) setActiveSection(entry.target.id);
         },
         { threshold: 0.3 }
       );
